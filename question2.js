@@ -1,67 +1,58 @@
-//to create custom type
-type colorData = "Red" | "Yellow" | "Blue" | "Green"
-class Circle{
-    radius : number = 1.0
-    color: colorData = "Red"
+//2.Class- Circle
+//Convert the UML diagram to Typescript class. - use number for double
 
-    //to create a constructor with optional parameter
-    constructor(radius?:number, color?:colorData){
-        if(typeof(radius)!=="undefined") { this.radius = radius }
-        if(typeof(color)!=="undefined") { this.color = color }
-    }
-    
-    //function to get radius value with number as return type
-    getRadius():number{
-        return this.radius
+class Circle {
+    private radius: number;
+    private color: string;
+
+    constructor(radius: number = 1.0, color: string = "red") {
+        this.radius = radius;
+        this.color = color;
     }
 
-    //function to set radius value
-    setRadius(radius:number){
-        this.radius = radius
+    getRadius(): number {
+        return this.radius;
     }
 
-    //function to get color value with custom return type colorData
-    getColor():colorData{
-        return this.color
+    setRadius(radius: number): void {
+        this.radius = radius;
     }
 
-    //function to set the color value
-    setColor(color:colorData){
-        this.color = color
+    getColor(): string {
+        return this.color;
     }
 
-    //to return string of member variables value
-    toString():String{
-        return `Radius: ${this.radius} Color: ${this.color}`
+    setColor(color: string): void {
+        this.color = color;
     }
 
-    //to compute and return circle area using radius
-    getArea():number{
-        return ((Math.PI)*this.radius*this.radius)
+    toString(): string {
+        return `Circle[radius=${this.radius}, color=${this.color}]`;
     }
 
-    //to compute and return circle circumference using radius
-    getCircumference():number{
-        return (2*(Math.PI)*this.radius)
+    getArea(): number {
+        return Math.PI * Math.pow(this.radius, 2);
+    }
+
+    getCircumference(): number {
+        return 2 * Math.PI * this.radius;
     }
 }
 
-//to invoke the Circle-class constructor with no param
-let c1 = new Circle()
-console.log("Constructor with no params: "+ c1.toString())
+// Example usage:
+const myCircle = new Circle(); // Creates a Circle with default values
+console.log(myCircle.toString()); // Display circle details
+console.log("Area:", myCircle.getArea()); // Calculate and display area
+console.log("Circumference:", myCircle.getCircumference()); // Calculate and display circumference
 
-//to invoke the Circle-class constructor with one param
-let c2 = new Circle(3.5)
-console.log("Constructor with one param: "+ c2.toString())
+// Modifying circle properties
+myCircle.setRadius(2.5);
+myCircle.setColor("blue");
+console.log(myCircle.toString()); // Display updated circle details
 
-//to invoke the Circle-class constructor with all the params
-let c3 = new Circle(2.2, 'Yellow')
-console.log("getRadius: "+c3.getRadius())
-c3.setRadius(3.3)
-console.log("Radius value after setRadius: " +c3.getRadius())
-console.log("getColor: "+c3.getColor())
-c3.setColor("Blue")
-console.log("Color Value after setColor: " + c3.getColor())
-console.log(c3.toString())
-console.log("Area: "+c3.getArea())
-console.log("Circumference: "+c3.getCircumference())
+//Output:
+
+Circle[radius=1, color=red]
+Area: 3.141592653589793
+Circumference: 6.283185307179586
+Circle[radius=2.5, color=blue]
