@@ -1,29 +1,30 @@
-class UberCalculator {
-    constructor(baseFare, costPerMile, costPerMinute) {
-      this.baseFare = baseFare;
-      this.costPerMile = costPerMile;
-      this.costPerMinute = costPerMinute;
+//4.write a class to calculate the Uber price.
+
+class UberPriceCalculator {
+    constructor(baseFare, costPerMinute, costPerMile) {
+        this.baseFare = baseFare;
+        this.costPerMinute = costPerMinute;
+        this.costPerMile = costPerMile;
     }
-  
+
     calculatePrice(distance, time) {
-      if (distance < 0 || time < 0) {
-        throw new Error("Distance and time must be non-negative values.");
-      }
-  
-      const distanceCost = distance * this.costPerMile;
-      const timeCost = time * this.costPerMinute;
-      const totalFare = this.baseFare + distanceCost + timeCost;
-  
-      return totalFare;
+        const fareFromDistance = distance * this.costPerMile;
+        const fareFromTime = time * this.costPerMinute;
+        const totalFare = this.baseFare + fareFromDistance + fareFromTime;
+        return totalFare;
     }
-  }
-  
-  const uberCalculator = new UberCalculator(5, 2, 0.5); 
-  
-  const distance = 10; 
-  const time = 15; 
-  
-  const totalFare = uberCalculator.calculatePrice(distance, time);
-  
-  console.log(`Uber Price: $${totalFare.toFixed(2)}`);
-  
+}
+
+// Example usage:
+const myUberRide = new UberPriceCalculator(5, 0.5, 1.2); // Base fare: $5, Cost per minute: $0.5, Cost per mile: $1.2
+const distanceTraveled = 10; // in miles
+const timeTaken = 20; // in minutes
+
+const totalPrice = myUberRide.calculatePrice(distanceTraveled, timeTaken);
+console.log(`The total price for the ride is $${totalPrice.toFixed(2)}`);
+
+
+//Otput:
+
+The total price for the ride is 
+$27.00
