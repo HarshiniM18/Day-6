@@ -1,45 +1,56 @@
+//3.Write a “person” class to hold all the details
+
 class Person {
-    constructor(name, age, address) {
-      this.name = name;
-      this.age = age;
-      this.address = address;
+    constructor(firstName, lastName, age, email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
     }
-  
-    getName() {
-      return this.name;
+
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`;
     }
-  
+
     getAge() {
-      return this.age;
+        return this.age;
     }
-  
-    getAddress() {
-      return this.address;
+
+    getEmail() {
+        return this.email;
     }
-  
-    setName(name) {
-      this.name = name;
+
+    setFirstName(firstName) {
+        this.firstName = firstName;
     }
-  
+
+    setLastName(lastName) {
+        this.lastName = lastName;
+    }
+
     setAge(age) {
-      this.age = age;
+        this.age = age;
     }
-  
-    setAddress(address) {
-      this.address = address;
+
+    setEmail(email) {
+        this.email = email;
     }
-  
-    displayDetails() {
-      console.log(`Name: ${this.name}`);
-      console.log(`Age: ${this.age}`);
-      console.log(`Address: ${this.address}`);
+
+    getDetails() {
+        return `Name: ${this.getFullName()}, Age: ${this.age}, Email: ${this.email}`;
     }
-  }
-  
-  const person1 = new Person("Harshini", 22, "123 Main St, City");
-  person1.displayDetails();
-  
-  person1.setAge(26);
-  person1.setAddress("456 Oak St, Town");
-  person1.displayDetails();
-  
+}
+
+// Example usage:
+const person1 = new Person("Harshini", "Developer", 23, "harshuharshini516@gmail.com");
+console.log(person1.getDetails()); // Display person details
+
+// Modifying person properties
+person1.setAge(22);
+person1.setEmail("harshinimano04@gmail.com");
+console.log(person1.getDetails()); // Display updated person details
+
+//Output:
+
+Name: Harshini Developer, Age: 23, Email: harshuharshini516@gmail.com
+Name: Harshini Developer, Age: 22, Email: harshinimano04@gmail.com
